@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1599858249051" clover="3.2.0">
-  <project timestamp="1599858249051" name="All files">
+<coverage generated="1601497577996" clover="3.2.0">
+  <project timestamp="1601497577996" name="All files">
     <metrics statements="50" coveredstatements="42" conditionals="10" coveredconditionals="8" methods="38" coveredmethods="28" elements="98" coveredelements="78" complexity="0" loc="50" ncloc="50" packages="1" files="2" classes="2"/>
     <file name="toDoList.js" path="/Users/admin/Documents/JS_130/lesson_3/jest_testing/toDoList.js">
       <metrics statements="39" coveredstatements="32" conditionals="8" coveredconditionals="6" methods="32" coveredmethods="23"/>
