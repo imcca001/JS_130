@@ -1,16 +1,18 @@
 function foo(condition) {
+  let bar;
+
   console.log(bar);
 
-  qux = 0.5772;
+  let qux = 0.5772;
 
   if (condition) {
-    var qux = 3.1415;
+    qux = 3.1415;
     console.log(qux);
   } else {
-    var bar = 24;
+    bar = 24;
 
-    var xyzzy = function() {
-      var qux = 2.7183;
+    let xyzzy = function() {
+      let qux = 2.7183;
       console.log(qux);
     };
 
