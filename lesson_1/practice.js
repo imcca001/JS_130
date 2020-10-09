@@ -1,17 +1,27 @@
-function filter(array, callback) {
-  let filteredArray = [];
-  for (let index = 0; index < array.length; index += 1) {
-    if (callback(array[index])) {
-      filteredArray.push(array[index]);
-    }
+function foo(condition) {
+  console.log(bar);
+
+  qux = 0.5772;
+
+  if (condition) {
+    var qux = 3.1415;
+    console.log(qux);
+  } else {
+    var bar = 24;
+
+    var xyzzy = function() {
+      var qux = 2.7183;
+      console.log(qux);
+    };
+
+    console.log(qux);
+    console.log(xyzzy());
   }
-  return filteredArray;
+
+  qux = 42;
+  console.log(qux);
 }
 
-let numbers = [1, 2, 3, 4, 5];
-console.log(filter(numbers, number => number > 3)); // => [ 4, 5 ]
-console.log(filter(numbers, number => number < 0)); // => []
-console.log(filter(numbers, () => true));           // => [ 1, 2, 3, 4, 5 ]
+foo(true);
+foo(false);
 
-let values = [1, "abc", null, true, undefined, "xyz"];
-console.log(filter(values, value => typeof value === "string"));

@@ -1,10 +1,26 @@
-function map(array, callback) {
-  return array.reduce((transformedItems, value) => {
-    transformedItems.push(callback(value));
-    return transformedItems;
-  }, [])
+function reduce(array, callback, initialValue) {
+    let accumulator = initialValue
+    let index = 0;
+
+    if (accumulator === undefined) {
+        accumulator = array[0];
+        index = 1;
+    }
+
+    while (index < array.length) {
+        accumulator = callback(accumulator, array[index]);
+        index += 1;
+    }
+
+    return accumulator;
 }
 
+function map(array, callback) {
+  return array.reduce((accumulator, number) => {
+    accumulator.push(callback(number));
+    return accumulator;
+  }, []);
+}
 
 let numbers = [1, 2, 3, 4, 5];
 console.log(map(numbers, number => number * 3));  // => [ 3, 6, 9, 12, 15 ]
