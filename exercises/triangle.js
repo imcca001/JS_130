@@ -1,53 +1,44 @@
-// isoceles
-// scalene
-// equilateral
-// illegal 
-    // negative
-    // sides don't add up
-    // any 0 values
-
 class Triangle {
   constructor(side1, side2, side3) {
-    this.sides = [side1, side2, side3];
+    this.side1 = side1;
+    this.side2 = side2;
+    this.side3 = side3;
   }
 
   kind() {
-    if (this.isTriangle()) {
-      return this.type();
-    }
+    this.triangle();
 
-    throw new Error("Not a triangle!");
+    if (this.scalene()) {
+      return 'scalene';
+    }
+    else if (this.equilateral()) {
+      return 'equilateral';
+    }
+    return 'isosceles';
   }
 
-  isTriangle() {
-    if (this.sides.every(side => side > 0)) {
-      return this.validSideLengths()
-    }
-  }
-
-  validSideLengths() {
-    let checkArray = this.sides.slice();
-    checkArray.sort(function(a, b) {
-      return a - b;
-    });
-    return checkArray[2] < (checkArray[0] + checkArray[1])
-  }
-
-  type() {
-    if (this.equilateral()) {
-      return "equilateral";
-    }
-
-    return this.isoceles() ? "isosceles" : "scalene";
+  scalene() {
+    return !(this.side1 === this.side2 
+          || this.side2 === this.side3 
+          || this.side1 === this.side3);
   }
 
   equilateral() {
-    return this.sides[0] === this.sides[1] && this.sides[1] === this.sides[2];
+    return this.side1 === this.side2 
+        && this.side2 === this.side3;
   }
 
-  isoceles() {
-    return this.sides[0] === this.sides[1] || this.sides[0] === this.sides[2] || this.sides[1] === this.sides[2];
+  triangle() {
+    if (this.side1 <= 0 || this.side2 <= 0 || this.side3 <= 0) {
+      throw new TypeError('This isn\'t a triangle!');
+    }
+    else if ((this.side1 + this.side2) < this.side3
+          || (this.side2 + this.side3) < this.side1
+          || (this.side3 + this.side1) < this.side2) {
+      throw new TypeError('Impossible Triangle!');
+    }
   }
 }
+
 
 module.exports = Triangle;
